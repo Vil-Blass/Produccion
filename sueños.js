@@ -43,6 +43,12 @@ selectTipoU.addEventListener("change", (event) => {
     console.log("Seleccionaste: " + selectedValue);
 });
 
+//hacer que todos los campos sean obligatorios
+inputNombre.required = true;
+inputFecha.required = true;
+inputCantidad.required = true;
+selectTipoU.required = true;
+
 // Validar enviar
 let inputEnviar = document.querySelector("#enviar");
 inputEnviar.addEventListener("click", (event) => {
@@ -51,11 +57,15 @@ inputEnviar.addEventListener("click", (event) => {
         alert("Enviado");
         return true;
     }
+
     // Reiniciar campos
     inputNombre.value = "";
     inputFecha.value = "";
     inputCantidad.value = "";
     selectTipoU.value = "";
+
+    //redirigir a otra pagina
+    window.location.href = "ty.html";
 });
 
 // Guardar datos en localStorage

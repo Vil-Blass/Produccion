@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- Google tag (gtag.js)  -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TSFW83BHL"></script>
@@ -12,33 +13,41 @@
 
       
     </script> -->
-   
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>producción</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
     <div class="container">
         <h1 class="title">Producción semanal</h1>
 
         <form action="get" class="form-container">
-            <label for="Nombre">Nombre de socio</label>
-            <input type="text" id="Nombre" placeholder="ingrese su nombre">
-            <label for="fecha">Semana de producción</label>
-           <input type="date" name="fecha" id="fecha"> 
-           <label for="cantidad">Cantida prevista </label>
-            <div class="input-group"><input type="number" id="cantidad" placeholder="producción">
-            <select id="selector">
-                <option value="">Selecciona una unidad</option>
-                <option value="kg">kg</option>
-                <option value="unidades">unidades</option>
-            </select></div>
-            
+            <label for="Nombre">Nombre de socio <span>*</span></label>
+            <input type="text" id="Nombre" placeholder="ingrese su nombre" required>
+            <label for="fecha">Semana de producción<span>*</span></label>
+            <input type="date" name="fecha" id="fecha"  required>
+            <label for="cantidad">Cantida prevista <span>*</span></label>
+            <div class="input-group">
+                <input type="number" id="cantidad" placeholder="producción"  required>
+                <select id="selector" required>
+                    <option value="" disabled selected>Selecciona una unidad</option>
+                    <option value="kg">kg</option>
+                    <option value="unidades">unidades</option>
+                </select>
+            </div>
+
         </form>
         <input type="submit" value="enviar" id="enviar">
+
+
+
     </div>
 
 </body>
-<script src="sueños.js"></script>
+<!-- <script src="sueños.js"></script> -->
+<script src="main.js"> </script>
+
 </html>
