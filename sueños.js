@@ -42,15 +42,15 @@ inputCantidad.addEventListener("input", (event) => {
 let inputEnviar = document.querySelector("#enviar");
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
-    if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid") ) {
+    if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid")&& inputCantidad.classList.contains("is-valid")) {
         alert("enviado");
         return true;
     }
     //reiniciar campos
     inputNombre.value = "";
     inputFecha.value = "";
-    inputFecha1.value = "";
-})
+    inputCantidad.value = "";
+    })
 
 // Guardar datos en localStorage
 localStorage.setItem('nombre', inputNombre.value);
