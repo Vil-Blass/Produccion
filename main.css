@@ -36,9 +36,20 @@
         justify-content: center;
         align-items: center;
 
+        input{
+            width: 100%;
+        }
+
     }
     .input-group {
         display: flex;
         flex-flow: row;
+
+        input{
+            width: 50%;
+        }
+        #selector{
+            width: 50%;
+        }
     }
 }
