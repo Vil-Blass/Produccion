@@ -38,11 +38,18 @@ inputCantidad.addEventListener("input", (event) => {
     }
 })
 
+//seleccionar tipo de produccion
+let selectTipoU = document.querySelector("#selector");
+  selectTipoU.addEventListener("change", (event) => {
+            const selectedValue = event.target.value;
+            console.log("Seleccionaste: " + selectedValue);
+        });
+
 //validar enviar
 let inputEnviar = document.querySelector("#enviar");
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
-    if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid")&& inputCantidad.classList.contains("is-valid")) {
+    if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid")&& inputCantidad.classList.contains("is-valid") && selectTipoU.value != "") {
         alert("enviado");
         return true;
     }
@@ -50,17 +57,20 @@ inputEnviar.addEventListener("click", (event) => {
     inputNombre.value = "";
     inputFecha.value = "";
     inputCantidad.value = "";
+    selectTipoU.value = "";
     })
 
 // Guardar datos en localStorage
 localStorage.setItem('nombre', inputNombre.value);
 localStorage.setItem('fecha', inputFecha.value);
 localStorage.setItem('cantidad', inputCantidad.value);
+localStorage.setItem('selector', selectTipoU.value);
 
 // Recuperar datos de localStorage
 let nombreGuardado = localStorage.getItem('nombre');
 let fechaGuardada = localStorage.getItem('fecha');
 let cantidadGuardada = localStorage.getItem('cantidad');
+let selectTipo = localStorage.getItem('selector');
 
 // Verificar si los datos están guardados
 if (nombreGuardado) {
@@ -74,10 +84,11 @@ if (fechaGuardada) {
 
 
 if (cantidadGuardada) {
-    console.log('Cantidad guardada: ' + cantidadGuardada + ' kg');
+    console.log('Cantidad guardada: ' + cantidadGuardada + selectTipoU.value);
 }
+
 
 // No es necesario acceder a .value ya que los valores ya están guardados en localStorage
 console.log(nombreGuardado);
 console.log(fechaGuardada);
-console.log(cantidadGuardada + ' kg');
+console.log(cantidadGuardada + selectTipoU.value);
