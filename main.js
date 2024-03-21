@@ -24,8 +24,6 @@ inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 inputFecha.value = fecha.toISOString().split("T")[0];
 
 
-
-
 inputCantidad.addEventListener("change", (event) => {
     const selectedValue = event.target.value;
     console.log("Seleccionaste: " + selectedValue);
@@ -56,3 +54,16 @@ inputEnviar.addEventListener("click", (event) => {
     // redirigir a otra página
     window.location.href = "ty.html";
 });
+
+// Guardar datos en localStorage
+localStorage.setItem("Nombre", inputNombre.value);
+localStorage.setItem("fecha", inputFecha.value);
+
+//sacar datos de localStorage
+let nombreGuardado = localStorage.getItem("Nombre");
+let fechaGuardada = localStorage.getItem("fecha");
+
+//estilo para nombreGuardado
+    nombreGuardado.style = "color: red";
+
+console.log("el nombre es "+nombreGuardado +" "+"la fecha es "+fechaGuardada);
