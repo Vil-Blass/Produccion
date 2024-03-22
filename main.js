@@ -6,7 +6,7 @@ const nombres = [
 
 // fecha:
 let fecha = new Date(
-    new Date().setDate(new Date().getDate() )
+    new Date().setDate(new Date().getDate())
 );
 console.log(fecha);
 
@@ -37,7 +37,7 @@ selectTipoU.addEventListener("input", (event) => {
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
-    if(inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "" || selectTipoU.value === "") {
+    if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "" || selectTipoU.value === "") {
         alert("rellene todos los campos");
         return false;
     }
@@ -64,6 +64,7 @@ let nombreGuardado = localStorage.getItem("Nombre");
 let fechaGuardada = localStorage.getItem("fecha");
 
 //estilo para nombreGuardado
-    nombreGuardado.style = "color: red";
+nombreGuardado.style = "color: red";
 
-console.log("el nombre es "+nombreGuardado +" "+"la fecha es "+fechaGuardada);
+console.log("el nombre es " + nombreGuardado + " " + "la fecha es " + fechaGuardada);
+

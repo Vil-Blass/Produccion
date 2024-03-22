@@ -21,33 +21,48 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="title">Producción semanal</h1>
+    <main class="main">
+        <div class="container">
+            <h1 class="title">Producción semanal</h1>
 
-        <form action="get" class="form-container">
-            <label for="Nombre">Nombre de socio <span>*</span></label>
-            <input type="text" id="Nombre" placeholder="ingrese su nombre" required>
-            <label for="fecha">Semana de producción<span>*</span></label>
-            <input type="date" name="fecha" id="fecha"  required>
-            <label for="cantidad">Cantida prevista <span>*</span></label>
-            <div class="input-group">
-                <input type="number" id="cantidad" placeholder="producción"  required>
+            <form action="get" class="form-container">
+                <div>
+                    <i class="fa-brands fa-product-hunt"></i>
+                    <label for="cantidad"> </i>Cantida prevista
+                        <span>*</span></label>
+                </div>
+                <input type="number" id="cantidad" placeholder="producción" required min="0" max="1000000">
                 <select id="selector" required>
                     <option value="" disabled selected>Selecciona una unidad</option>
                     <option value="kg">kg</option>
                     <option value="unidades">unidades</option>
                 </select>
-            </div>
 
-        </form>
-        <input type="submit" value="enviar" id="enviar">
+                <div>
+                    <i class="fa-solid fa-user"></i>
+                    <label for="Nombre"> Nombre de socio <span>*</span></label>
+                </div>
+                <input type="text" id="Nombre" placeholder="ingrese su nombre" required disabled>
+
+                <div>
+                    <i class="fa-regular fa-calendar-days"></i>
+                    <label for="fecha"> Semana de
+                        producción<span>*</span></label>
+                </div>
+                <input type="date" name="fecha" id="fecha" required disabled>
+
+                <input type="submit" value="enviar" id="enviar">
+
+            </form>
 
 
 
-    </div>
 
+        </div>
+    </main>
 </body>
 <!-- <script src="sueños.js"></script> -->
+<script src="https://kit.fontawesome.com/308662c8e9.js" crossorigin="anonymous"></script>
 <script src="main.js"> </script>
 
 </html>
