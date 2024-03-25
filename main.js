@@ -16,8 +16,11 @@ let inputCantidad = document.querySelector("#cantidad");
 let selectTipoU = document.querySelector("#selector");
 let inputEnviar = document.querySelector("#enviar");
 
-
-
+let params = (new URL(document.location)).searchParams;
+let socio = params.get("socio");
+let semana = params.get("semana")
+socio ? inputNombre.value = socio : inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
+semana ? inputFecha.value = semana : inputFecha.value = fecha.toISOString().split("T")[0];
 // rellenar inputNombre con un nombre aleatorio de la lista
 inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 // rellenar inputFecha con la fecha del dia
