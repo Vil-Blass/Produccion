@@ -14,23 +14,22 @@ let inputCantidad = document.querySelector("#cantidad");
 let inputEnviar = document.querySelector("#enviar");
 
 
-// parametros
-let parametros = new URLSearchParams(window.location.search);
-
-
-
-
-
-
 // rellenar inputNombre con un nombre aleatorio de la lista
 inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 // rellenar inputFecha con la fecha del dia
 inputFecha.value = fecha.toISOString().split("T")[0];
 
-
+// parametros
+let parametros = new URLSearchParams(window.location.search);
+//guardar parametros
 parametros.set("socio", inputNombre.value);
 parametros.set("semana", inputFecha.value);
 console.log(parametros);
+
+//sacar datos parametrso
+let paGuardado = parametros.get("socio");
+let feGuardada = parametros.get("semana");
+
 
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
