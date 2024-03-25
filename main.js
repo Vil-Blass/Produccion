@@ -30,6 +30,11 @@ console.log(parametros);
 let paGuardado = parametros.get("socio");
 let feGuardada = parametros.get("semana");
 
+if(paGuardado && feGuardada ){
+    inputNombre.value = paGuardado;
+    inputFecha.value = feGuardada;
+}
+console.log("el nombre es " + paGuardado + " " + "la fecha es " + feGuardada);
 
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
@@ -59,8 +64,7 @@ localStorage.setItem("fecha", inputFecha.value);
 let nombreGuardado = localStorage.getItem("Nombre");
 let fechaGuardada = localStorage.getItem("fecha");
 
-//estilo para nombreGuardado
-nombreGuardado.style = "color: red";
+
 
 console.log("el nombre es " + nombreGuardado + " " + "la fecha es " + fechaGuardada);
 
