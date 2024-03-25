@@ -20,26 +20,25 @@ inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 inputFecha.value = fecha.toISOString().split("T")[0];
 
 // parametros
-let parametros = new URLSearchParams(window.location.search);
-//guardar parametros
-parametros.set("socio", inputNombre.value);
-parametros.set("semana", inputFecha.value);
-console.log(parametros);
 
+
+let parametros = (new URL(document.location)).searchParams;
 //sacar datos parametrso
-let paGuardado = parametros.get("socio");
-let feGuardada = parametros.get("semana");
+let socio = parametros.get('socio');
+let semana = parametros.get('semana');
 
-if(paGuardado && feGuardada ){
-    inputNombre.value = paGuardado;
-    inputFecha.value = feGuardada;
+if (inputNombre && inputFecha) {
+    socio = inputNombre.value;
+    semana = inputFecha.value;
+
+    console.log(socio);
+    console.log(semana);
 }
-console.log("el nombre es " + paGuardado + " " + "la fecha es " + feGuardada);
 
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
-    if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "" ){
+    if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "") {
         alert("rellene todos los campos");
         return false;
     }
@@ -63,8 +62,4 @@ localStorage.setItem("fecha", inputFecha.value);
 //sacar datos de localStorage
 let nombreGuardado = localStorage.getItem("Nombre");
 let fechaGuardada = localStorage.getItem("fecha");
-
-
-
-console.log("el nombre es " + nombreGuardado + " " + "la fecha es " + fechaGuardada);
 
