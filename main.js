@@ -20,8 +20,8 @@ let params = (new URL(document.location)).searchParams;
 let socio = params.get("socio");
 let semana = params.get("semana")
 
-socio =inputNombre.value;
-semana =inputFecha.value;
+
+
 
 
 
