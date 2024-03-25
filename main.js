@@ -15,16 +15,8 @@ let inputEnviar = document.querySelector("#enviar");
 
 
 // parametros
-let params = new URLSearchParams(window.location.search);
-let socio =params.get("socio"+ inputNombre.value);
-let semana = params.get("semana"+ inputFecha.value);
+let parametros = new URLSearchParams(window.location.search);
 
-if(socio && semana){
-    inputNombre.value = socio;
-    inputFecha.value = semana;
-}
-
-console.log(params);
 
 
 
@@ -36,8 +28,10 @@ inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 inputFecha.value = fecha.toISOString().split("T")[0];
 
 
+parametros.set("socio", inputNombre.value);
+parametros.set("semana", inputFecha.value);
+console.log(parametros);
 
-//
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
@@ -53,7 +47,6 @@ inputEnviar.addEventListener("click", (event) => {
     // Reiniciar campos
 
     inputCantidad.value = "";
-    selectTipoU.value = "";
 
     // redirigir a otra página
     window.location.href = "ty.html";
