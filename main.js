@@ -11,15 +11,20 @@ console.log(fecha);
 let inputNombre = document.querySelector("#Nombre");
 let inputFecha = document.querySelector("#fecha");
 let inputCantidad = document.querySelector("#cantidad");
-let selectTipoU = document.querySelector("#selector");
 let inputEnviar = document.querySelector("#enviar");
 
 
 // parametros
-let params = (new URL(document.location)).searchParams;
-let socio = params.get("socio");
-let semana = params.get("semana")
+let params = new URLSearchParams(window.location.search);
+let socio =params.get("socio"+ inputNombre.value);
+let semana = params.get("semana"+ inputFecha.value);
 
+if(socio && semana){
+    inputNombre.value = socio;
+    inputFecha.value = semana;
+}
+
+console.log(params);
 
 
 
@@ -31,24 +36,16 @@ inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 inputFecha.value = fecha.toISOString().split("T")[0];
 
 
-inputCantidad.addEventListener("change", (event) => {
-    const selectedValue = event.target.value;
-    console.log("Seleccionaste: " + selectedValue);
-});
 
-selectTipoU.addEventListener("input", (event) => {
-    const selectedValue = event.target.value;
-    console.log("Seleccionaste: " + selectedValue);
-});
 //
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
-    if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "" || selectTipoU.value === "") {
+    if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "" ){
         alert("rellene todos los campos");
         return false;
     }
-    else if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid") && inputCantidad.value != "" && selectTipoU.value != "") {
+    else if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid") && inputCantidad.value != "") {
         alert("Enviado");
         return true;
     }

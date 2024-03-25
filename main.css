@@ -16,7 +16,6 @@
         flex-flow: column;
         justify-content: center;
         align-items: center;
-        /* border-radius: 2%; */
         background-color: rgb(118, 167, 137);
     }
 
@@ -51,7 +50,7 @@
 
     .form-container {
         width: 85%;
-        height: 75%;
+        height: max-content;
         display: flex;
         flex-flow: column;
         align-items: center;
@@ -64,9 +63,9 @@
             display: flex;
             flex-flow: row;
             width: 100%;
-            height: fit-content;
+            height: 100%;
             align-items: center;
-            justify-content: center;
+            justify-content: left;
             background-color: rgb(230, 227, 209);
             border-radius: 10px;
             margin: 2%;
@@ -74,7 +73,7 @@
 
 
             i {
-
+                padding: 0 10%  0 10%;
                 font-size: 1.2em;
                 background-color: transparent;
 
@@ -91,60 +90,46 @@
                 font-size: 0.8em;
                 color: red;
             }
+
+            input {
+
+                width: 80%;
+                margin: 1.5%;
+
+                background-color: rgb(230, 227, 209);
+                border-radius: 5px;
+                font-size: x-large;
+            }
+
         }
 
-        input {
+
+
+
+        input[type="number"] {
             width: 100%;
-            height: 2.5em;
+            height: 50%;
             margin: 1.5%;
-            padding: 1%;
-            background-color: rgb(230, 227, 209);
+            background-color: white;
             border-radius: 5px;
 
-        }
-
-        select {
-            width: 100%;
-            margin: 2%;
-            border-radius: 5px;
-            font-size: 1.08em;
-            background-color: rgb(118, 167, 137);
         }
 
         input[type="submit"] {
-            width: 50%;
+            width: fit-content;
             height: 2.5em;
             margin: 2%;
             padding: 1%;
-        }
-    }
-
-    .info {
-        width: 100%;
-        height: 15%;
-        text-align: center;
-        border-top: 3px solid black;
-        margin: 1%;
-        padding: 1%;
-        background-color: rgb(255, 252, 243);
-        border-radius: 10px;
-
-        h3 {
-            font-size: 1.5em;
-        }
-
-        p {
-            font-size: 1em;
-
-            span {
-                color: red;
-            }
+            text-align: center;
         }
     }
 
 
-    #cantidad, #enviar{
+
+
+    #cantidad,
+    #enviar {
         cursor: pointer;
     }
-    
+
 }
