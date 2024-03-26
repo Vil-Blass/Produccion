@@ -15,9 +15,15 @@ let inputEnviar = document.querySelector("#enviar");
 
 
 // rellenar inputNombre con un nombre aleatorio de la lista
-inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
+// inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
+inputNombre.innerHTML = nombres[Math.floor(Math.random() * nombres.length)];
+
+
+
 // rellenar inputFecha con la fecha del dia
-inputFecha.value = fecha.toISOString().split("T")[0];
+// inputFecha.value = fecha.toISOString().split("T")[0];
+inputFecha.innerHTML = fecha.toISOString().split("T")[0];
+
 
 // parametros
 
@@ -28,9 +34,16 @@ let socio = parametros.get('socio');
 let semana = parametros.get('semana');
 
 if (inputNombre && inputFecha) {
-    socio = inputNombre.value;
-    semana = inputFecha.value;
+    socio = inputNombre.innerHTML;
+    semana = inputFecha.innerHTML;
 
+    console.log("socio: "+socio);
+    console.log("semana: "+ semana);
+}
+else if (socio && semana) {
+    inputNombre.innerHTML = socio;
+    inputFecha.innerHTML = semana;
+    
     console.log(socio);
     console.log(semana);
 }
@@ -62,4 +75,6 @@ localStorage.setItem("fecha", inputFecha.value);
 //sacar datos de localStorage
 let nombreGuardado = localStorage.getItem("Nombre");
 let fechaGuardada = localStorage.getItem("fecha");
+
+// metodo post  
 
