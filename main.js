@@ -43,9 +43,9 @@ if (inputNombre && inputFecha) {
 else if (socio && semana) {
     inputNombre.innerHTML = socio;
     inputFecha.innerHTML = semana;
-    
-    console.log(socio);
-    console.log(semana);
+
+    console.log("socio" + inputNombre.value);
+    console.log("semana" + inputFecha.value);
 }
 
 // Validar enviar
