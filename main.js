@@ -1,3 +1,4 @@
+'use strict';
 // array de 20 nombres:
 const nombres = [
     "Pedro", "Juan", "Maria", "Luis", "Ana", "Carlos", "Sofia", "Jorge", "Lucia", "Marta", "Pablo",
@@ -6,7 +7,6 @@ const nombres = [
 
 // fecha:
 let fecha = new Date();
-
 console.log(fecha);
 
 let inputNombre = document.querySelector("#Nombre");
@@ -14,64 +14,46 @@ let inputFecha = document.querySelector("#fecha");
 let inputCantidad = document.querySelector("#cantidad");
 let inputEnviar = document.querySelector("#enviar");
 
-
 // rellenar inputNombre con un nombre aleatorio de la lista
-// inputNombre.value = nombres[Math.floor(Math.random() * nombres.length)];
 inputNombre.innerHTML = nombres[Math.floor(Math.random() * nombres.length)];
 
-
-
-// rellenar inputFecha con la fecha del dia
-// inputFecha.value = fecha.toISOString().split("T")[0];
+// rellenar inputFecha con la fecha del día
 inputFecha.innerHTML = fecha.toISOString().split("T")[0];
 
-
-//url
-
-// parametros
+// URL
+// parámetros
 let parametros = new URLSearchParams(window.location.search);
-//sacar datos parametrso
+// sacar datos parámetros
 let socio = parametros.get('socio');
 let semana = parametros.get('semana');
 
-if (socio && semana) {
-    inputNombre.innerHTML = socio;
-    inputFecha.innerHTML = semana;
-
-    console.log("socio" + inputNombre.value);
-    console.log("semana" + inputFecha.value);
-}
-else if  (inputNombre && inputFecha) {
+if (inputNombre && inputFecha) {
     socio = inputNombre.innerHTML;
     semana = inputFecha.innerHTML;
-
-    console.log("socio: " + socio);
-    console.log("semana: " + semana);
+    console.log("socio: " + socio + ' ' + "semana: " + semana);
+} else if (socio && semana) {
+    inputNombre.value = socio;
+    inputFecha.value = semana;
+    console.log("socio: " + socio + ' ' + "semana: " + semana);
 }
+console.log('estoy después del if');
 
-//Mostar los parametros en la urlhttps://garaia.netlify.app/
-
-let url = window.location.href + "?socio=" + socio + "&semana=" + semana;
-
+// Mostrar los parámetros en la URL
+let url = window.location.href.replace(window.location.search, "");
 console.log(url);
-
-console.log("http://" + window.location.host + window.location.pathname + "?socio=" + socio + "&semana=" + semana);
-
 
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
     if (inputNombre.value === "" || inputFecha.value === "" || inputCantidad.value === "") {
-        alert("rellene todos los campos");
+        alert("Rellene todos los campos");
         return false;
-    }
-    else if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid") && inputCantidad.value != "") {
+    } else if (inputNombre.classList.contains("is-valid") && inputFecha.classList.contains("is-valid") && inputCantidad.value !== "") {
         alert("Enviado");
         return true;
     }
 
     // Reiniciar campos
-
     inputCantidad.value = "";
 
     // redirigir a otra página
@@ -82,9 +64,31 @@ inputEnviar.addEventListener("click", (event) => {
 localStorage.setItem("Nombre", inputNombre.value);
 localStorage.setItem("fecha", inputFecha.value);
 
-//sacar datos de localStorage
+// sacar datos de localStorage
 let nombreGuardado = localStorage.getItem("Nombre");
 let fechaGuardada = localStorage.getItem("fecha");
 
-// metodo post  
+// método post para url index.html
+let data = {
+    socio: inputNombre.value,
+    semana: inputFecha.value,
+    cantidad: inputCantidad.value
+};
+fetch(url, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+})
+    .then(response => response.json())
+    .then(data => {
+        // Manejar la respuesta de datos aquí
+        console.log(data);
+    })
+    .catch(error => {
+        // Manejar cualquier error aquí
+        console.error(error);
+    });
 
+console.log(data + ' ' + 'positivo');
