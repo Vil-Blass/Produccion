@@ -33,21 +33,20 @@ let parametros = (new URL(document.location)).searchParams;
 let socio = parametros.get('socio');
 let semana = parametros.get('semana');
 
-if (inputNombre && inputFecha) {
-    socio = inputNombre.innerHTML;
-    semana = inputFecha.innerHTML;
-
-    console.log("socio: "+socio);
-    console.log("semana: "+ semana);
-}
-else if (socio && semana) {
+if (socio && semana) {
     inputNombre.innerHTML = socio;
     inputFecha.innerHTML = semana;
 
     console.log("socio" + inputNombre.value);
     console.log("semana" + inputFecha.value);
 }
+else if  (inputNombre && inputFecha) {
+    socio = inputNombre.innerHTML;
+    semana = inputFecha.innerHTML;
 
+    console.log("socio: " + socio);
+    console.log("semana: " + semana);
+}
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
