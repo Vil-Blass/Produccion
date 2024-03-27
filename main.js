@@ -51,11 +51,11 @@ else if  (inputNombre && inputFecha) {
 
 //Mostar los parametros en la urlhttps://garaia.netlify.app/
 
-let url = window.location.href;
+let url = window.location.href + "?socio=" + socio + "&semana=" + semana;
 
 console.log(url);
 
-console.log("https://garaia.netlify.app/" + window.location.host + window.location.pathname + "?socio=" + socio + "&semana=" + semana);
+console.log("http://" + window.location.host + window.location.pathname + "?socio=" + socio + "&semana=" + semana);
 
 
 // Validar enviar
