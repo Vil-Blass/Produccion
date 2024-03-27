@@ -6,6 +6,7 @@ const nombres = [
 
 // fecha:
 let fecha = new Date();
+
 console.log(fecha);
 
 let inputNombre = document.querySelector("#Nombre");
@@ -25,10 +26,10 @@ inputNombre.innerHTML = nombres[Math.floor(Math.random() * nombres.length)];
 inputFecha.innerHTML = fecha.toISOString().split("T")[0];
 
 
+//url
+
 // parametros
-
-
-let parametros = (new URL(document.location)).searchParams;
+let parametros = new URLSearchParams(window.location.search);
 //sacar datos parametrso
 let socio = parametros.get('socio');
 let semana = parametros.get('semana');
@@ -47,6 +48,16 @@ else if  (inputNombre && inputFecha) {
     console.log("socio: " + socio);
     console.log("semana: " + semana);
 }
+
+//Mostar los parametros en la urlhttps://garaia.netlify.app/
+
+let url = window.location.href;
+
+console.log(url);
+
+console.log("https://garaia.netlify.app/" + window.location.host + window.location.pathname + "?socio=" + socio + "&semana=" + semana);
+
+
 // Validar enviar
 inputEnviar.addEventListener("click", (event) => {
     event.preventDefault();
