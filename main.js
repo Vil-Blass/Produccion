@@ -1,6 +1,6 @@
-let inputNombre = document.querySelector("#Nombre");
-let inputFecha = document.querySelector("#fecha");
-let inputCantidad = document.querySelector("#cantidad");
+let inputNombre = document.querySelector("#form_nombre");
+let inputFecha = document.querySelector("#form_fecha");
+let inputCantidad = document.querySelector("#form_cantidad");
 let inputEnviar = document.querySelector("#enviar");
 
 // parametros
@@ -9,11 +9,14 @@ let parametros = new URL(document.location).searchParams;
 let socio = parametros.get("socio");
 let semana = parametros.get("semana");
 
-inputNombre.innerHTML = socio;
-inputFecha.innerHTML = semana;
 if (!socio || !semana) {
   inputEnviar.disabled = true;
   alert("Error en la página. Faltan datos del socio o la semana.");
+} else {
+  document.querySelector("#Nombre").innerHTML = socio;
+  document.querySelector("#fecha").innerHTML = semana;
+  inputNombre.value = socio;
+  inputFecha.value = semana;
 }
 
 // Validar enviar
@@ -26,14 +29,16 @@ inputEnviar.addEventListener("click", (event) => {
   ) {
     alert("Debes indicar la cantidad prevista para poder enviar los datos.");
     return false;
-  } else if (
-    inputNombre.classList.contains("is-valid") &&
-    inputFecha.classList.contains("is-valid") &&
-    inputCantidad.value != ""
-  ) {
-    alert("Enviado");
-    return true;
   }
+
+  emailjs.sendForm("service_zqgwk48", "template_p7bd6ur", "form").then(
+    (response) => {
+      console.log("SUCCESS!", response.status, response.text);
+    },
+    (error) => {
+      console.log("FAILED...", error);
+    }
+  );
 
   // Reiniciar campos
 

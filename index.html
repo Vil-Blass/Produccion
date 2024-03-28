@@ -21,6 +21,15 @@
      recolección de datos de producción semanal">
     <title>producción</title>
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init({
+              publicKey: "-1ErDEvdtz2qNAaqm",
+            });
+        })();
+    </script>
 </head>
 
 <body>
@@ -28,25 +37,24 @@
         <div class="container">
             <h1 class="title">Producción semanal prevista</h1>
 
-            <form action="get" class="form-container">
+            <form class="form-container">
                 <div >
                     <i class="fa-brands fa-product-hunt"></i>
                     <label for="cantidad"> Cantidad prevista
                 </div>
-                <input type="number" id="cantidad" placeholder="Introduce la cantidad de producción prevista" required min="0"
+                <input type="number" id="form_cantidad" name="form_cantidad" placeholder="Introduce la cantidad de producción prevista" required min="0"
                     max="1000000">
 
 
-                <div  >
+                <div>
                     <i class="fa-solid fa-user"></i>
-                    <!-- <input type="text" id="Nombre" placeholder="ingrese su nombre" required disabled> -->
+                    <input type="hidden" id="form_nombre" name="form_nombre" required>
                     <h4 id="Nombre"></h4>
-
                 </div>
 
                 <div  >
                     <i class="fa-regular fa-calendar-days"></i>
-                    <!-- <input type="date" name="fecha" id="fecha" required disabled> -->
+                    <input type="hidden" name="form_fecha" id="form_fecha" required>
                     <h4 id="fecha"></h4>
                 </div>
 
