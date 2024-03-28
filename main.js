@@ -47,13 +47,3 @@ inputEnviar.addEventListener("click", (event) => {
   // redirigir a otra página
   window.location.href = "ty.html";
 });
-
-// Guardar datos en localStorage
-localStorage.setItem("Nombre", inputNombre.value);
-localStorage.setItem("fecha", inputFecha.value);
-
-// sacar datos de localStorage
-let nombreGuardado = localStorage.getItem("Nombre");
-let fechaGuardada = localStorage.getItem("fecha");
-
-// metodo post
